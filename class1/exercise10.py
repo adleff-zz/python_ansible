@@ -3,17 +3,21 @@
 # Find all 'crypto map CRYPTO' entries without AES encryption
 # and print entries with configured transform-set
 
+import re
 from ciscoconfparse import CiscoConfParse
 
-if __name__ == "__main__":
 
-    config = CiscoConfParse("cisco_ipsec.txt")
+config = CiscoConfParse("cisco_ipsec.txt")
 
-    for cryptomap in config.find_objects_wo_child(parentspec=r"^crypto map CRYPTO", 
-                                                  childspec=r"set\stransform-set\sAES"):
-        print cryptomap.text
+cryptomap = config.find_objects_wo_child(parentspec=r"crypto map CRYPTO", 
+                                         childspec=r"set transform-set AES")
+    
+for object in cryptomap:
+    for i in object.children:
+        if 'set transform-set' in i.text:       
+            transform_set = re.search(r"set transform-set (.*)$", i.text)
+            transform_name = transform_set.group(1)
+    
+    print "%s:  %s\n" % (object.text, transform_name)
 
-        for transform_set in cryptomap.re_search_children(r"set\stransform-set\s"):
-        
-            print transform_set.text        
 

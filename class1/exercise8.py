@@ -5,13 +5,12 @@
 
 from ciscoconfparse import CiscoConfParse
 
-if __name__ == "__main__":
 
-    config = CiscoConfParse("cisco_ipsec.txt")
+config = CiscoConfParse("cisco_ipsec.txt")
 
-    for cryptomap in config.find_objects(r"crypto map CRYPTO"):
+for cryptomap in config.find_objects(r"crypto map CRYPTO"):
     
-        print cryptomap.text
+    print cryptomap.text
         
-        for subconfig in cryptomap.children:
-            print subconfig.text
+    for subconfig in cryptomap.children:
+        print subconfig.text

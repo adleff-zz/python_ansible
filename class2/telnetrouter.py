@@ -37,7 +37,9 @@ class TelnetRouter(object):
         self.remote_conn.write(cmd + "\n")
 
         time.sleep(1)
-        output = self.remote_conn.read_very_eager().lstrip(cmd) 
+        output = self.remote_conn.read_very_eager()
+        output = output.lstrip(cmd)
+        output = output.lstrip()
 
         return output
 

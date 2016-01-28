@@ -25,11 +25,11 @@ class TelnetRouter(object):
 
         output = self.remote_conn.read_until("sername:", self.telnet_timeout)
         self.remote_conn.write(self.username + "\n")
-        output += self.remote_conn.read_until("ssword:", self.telnet_timeout)
+        output = self.remote_conn.read_until("ssword:", self.telnet_timeout)
         self.remote_conn.write(self.password + "\n")
  
         time.sleep(1)
-        output += self.remote_conn.read_very_eager()
+        output = self.remote_conn.read_very_eager()
 
 
     def tr_cmd(self, cmd):
@@ -37,7 +37,7 @@ class TelnetRouter(object):
         self.remote_conn.write(cmd + "\n")
 
         time.sleep(1)
-        output = self.remote_conn.read_very_eager() 
+        output = self.remote_conn.read_very_eager().lstrip(cmd) 
 
         return output
 

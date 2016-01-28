@@ -22,9 +22,6 @@ class TelnetRouter(object):
         except:
             sys.exit("Connection Timeout")
 
-         
-
-    def tr_open(self):
 
         output = self.remote_conn.read_until("sername:", self.telnet_timeout)
         self.remote_conn.write(self.username + "\n")
@@ -34,7 +31,6 @@ class TelnetRouter(object):
         time.sleep(1)
         output += self.remote_conn.read_very_eager()
 
-        return output
 
     def tr_cmd(self, cmd):
 
@@ -54,9 +50,8 @@ def main():
 
     test = TelnetRouter("50.76.53.27", "pyclass", "88newclass")
 
-    output = test.tr_open()
-    output += test.tr_cmd("terminal length 0")
-    output += test.tr_cmd("show ip int brief")
+    output = test.tr_cmd("terminal length 0")
+    output = test.tr_cmd("show ip int brief")
 
     print output
     test.tr_close()

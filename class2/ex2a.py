@@ -7,13 +7,11 @@ from telnetrouter import TelnetRouter
 
 def main():
 
-    remote_conn = TelnetRouter("50.76.53.27")
+    remote_conn = TelnetRouter("50.76.53.27", "pyclass", "88newclass")
 
-    output = remote_conn.tr_open("pyclass", "88newclass")
+    output = remote_conn.tr_cmd("terminal length 0")
 
-    output += remote_conn.tr_cmd("terminal length 0")
-
-    output += remote_conn.tr_cmd("show ip int brief")
+    output = remote_conn.tr_cmd("show ip int brief")
 
     print output
 

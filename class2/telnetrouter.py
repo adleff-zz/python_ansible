@@ -6,6 +6,7 @@
 import sys
 import telnetlib
 import time
+import socket
 
 class TelnetRouter(object):
 
@@ -19,7 +20,7 @@ class TelnetRouter(object):
         
         try:
             self.remote_conn = telnetlib.Telnet(self.ip_addr, self.telnet_port, self.telnet_timeout)
-        except:
+        except socket.timeout:
             sys.exit("Connection Timeout")
 
 

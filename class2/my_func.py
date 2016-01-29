@@ -5,5 +5,8 @@
 def my_func():
     print 'hello'
 
-if __name__ == "__main__":
+def main():
     my_func()
+
+if __name__ == "__main__":
+    main()

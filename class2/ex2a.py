@@ -1,21 +1,26 @@
 #!/usr/bin/env python
+'''
+Use my newly defined tr.py module to pull 
+'show ip int brief' output from pynet-rtr1
+'''
 
-# Use my newly defined TelnetRouter module to pull \
-# 'show ip int brief' from pynet-rtr1
-
-from telnetrouter import TelnetRouter
+import tr
+import getpass
 
 def main():
+    '''
+    Setup instance of TelnetRouter and send 'show ip int brief'
+    '''
 
-    remote_conn = TelnetRouter("50.76.53.27", "pyclass", "88newclass")
+    router = tr.TelnetRouter(raw_input("IP Address: "), raw_input("Username: "), getpass.getpass())
 
-    output = remote_conn.tr_cmd("terminal length 0")
+    output = router.tr_cmd("terminal length 0")
 
-    output = remote_conn.tr_cmd("show ip int brief")
+    output = router.tr_cmd("show ip int brief")
 
     print output
 
-    remote_conn.tr_close()
+    router.tr_close()
 
 
 if __name__ == "__main__":

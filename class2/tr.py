@@ -74,7 +74,7 @@ def main():
 
     test = TelnetRouter(raw_input("IP Address: "), raw_input("Username: "), getpass.getpass())
 
-    output = test.tr_cmd("terminal length 0")
+    test.tr_cmd("terminal length 0")
     output = test.tr_cmd("show ip int brief")
 
     print output

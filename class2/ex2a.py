@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 '''
-Use my newly defined tr.py module to pull 
+Use my tr.py module to pull 
 'show ip int brief' output from pynet-rtr1
 '''
 

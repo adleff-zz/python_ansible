@@ -10,7 +10,7 @@ p2
 Ntp3
 Rp4
 (dp5
-S'machine_last_change'
+S'machine_lastchange'
 p6
 S'122183348'
 p7
@@ -30,9 +30,9 @@ p2
 Ntp3
 Rp4
 (dp5
-S'machine_last_change'
+S'machine_lastchange'
 p6
-S'130761339'
+S'131121305'
 p7
 sS'machine_name'
 p8

@@ -12,14 +12,14 @@ class NewMachine(object):
     '''
     Create a object used to store machine OID data
     '''
-    def __init__(self, machine_name, machine_last_change):
+    def __init__(self, machine_name, machine_lastchange):
         '''
         Initialize a new machine object and store machine name,
         the current uptime value and last change value
         '''
 
         self.machine_name = machine_name
-        self.machine_last_change = machine_last_change
+        self.machine_lastchange = machine_lastchange
 
 
 def email_alert(alert_obj):
@@ -34,7 +34,7 @@ def email_alert(alert_obj):
     
     Machine: {0} running-config changed at uptime: {1}
 
-    '''.format(alert_obj.machine_name, int(alert_obj.machine_last_change) / 100)
+    '''.format(alert_obj.machine_name, int(alert_obj.machine_lastchange) / 100)
 
     sender = 'aleff@twb-tech.com'
     send_mail(recipient, subject, message, sender)

@@ -49,9 +49,9 @@ def main():
             snmp_data.append(snmp_poll)
 
         machine_name = snmp_data[0]
-        machine_last_change = snmp_data[1]
+        machine_lastchange = snmp_data[1]
 
-        pickle_dump_list.append(NewMachine(machine_name, machine_last_change))
+        pickle_dump_list.append(NewMachine(machine_name, machine_lastchange))
 
 
         # test if polled sysName matches a previously stored device,
@@ -60,7 +60,7 @@ def main():
         if machine_name in stored_machines:
             alert_obj = stored_machines[machine_name]
 
-            if machine_last_change > alert_obj.machine_last_change:
+            if machine_lastchange > alert_obj.machine_lastchange:
                 print "\n{0}: running-config has changed!".format(machine_name)
                 email_alert(alert_obj)
 

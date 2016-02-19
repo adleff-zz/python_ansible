@@ -55,12 +55,12 @@ def load_stored_machines(pickle_file):
 
     # Create dictionary for found stored machines
 
-    stored_machines = {} 
+    stored_machines = {}
 
-    with open(pickle_file, 'r') as file:
+    with open(pickle_file, 'r') as pkl_file:
         while True:
             try:
-                found_machines = pickle.load(file)
+                found_machines = pickle.load(pkl_file)
                 stored_machines[found_machines.machine_name] = found_machines
             except EOFError:
-                return stored_machines 
+                return stored_machines

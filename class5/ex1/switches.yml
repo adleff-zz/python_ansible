@@ -1,0 +1,23 @@
+---
+- name: Generate five switch config files with
+    ip_addr, default_gateway and hostname as unique values 
+  hosts: local
+  tasks:
+    - name: create files from template 
+      template: src=access_switch.j2 dest=./{{item.hostname}}.txt
+      with_items:
+        - {hostname: switch1, access_vlan: 1, 
+            secret: 88pyclass, snmp_community: pysnmp, 
+            ip_addr: 172.16.1.10, default_gateway: 172.16.1.1}
+        - {hostname: switch2, access_vlan: 2, 
+            secret: 88pyclass, snmp_community: pysnmp,
+            ip_addr: 172.16.2.10, default_gateway: 172.16.2.1}
+        - {hostname: switch3, access_vlan: 3, 
+            secret: 88pyclass, snmp_community: pysnmp,
+            ip_addr: 172.16.3.10, default_gateway: 172.16.3.1}
+        - {hostname: switch4, access_vlan: 4, 
+            secret: 88pyclass, snmp_community: pysnmp,
+            ip_addr: 172.16.4.10, default_gateway: 172.16.4.1}
+        - {hostname: switch5, access_vlan: 5, 
+            secret: 88pyclass, snmp_community: pysnmp,
+            ip_addr: 172.16.5.10, default_gateway: 172.16.5.1}
